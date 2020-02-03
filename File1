@@ -1,0 +1,44 @@
+#This program shows the longest sequence of letters in a string that are in alphabetical order.If a letter is the same as another
+#letter this can be included in the sequence. 
+def alph(s):
+    az = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x","y","z"]
+    s_string = []
+    string = ""
+    longstring = ""
+    placeh = "a"
+
+    for i in s:
+        s_string.append(i)
+
+    while len(s_string) >0:
+
+            if len(string) ==0:
+                #print("s_string[0]", s_string[0])
+                string = s_string[0]
+                placeh = s_string[0]
+                s_string.pop(0)
+                
+            elif int(az.index(s_string[0]))>= int(az.index(placeh)):
+                string += s_string[0]
+                placeh = s_string[0]
+                s_string.pop(0)
+                if len(longstring)< len(string):
+                    longstring = string
+
+            elif int(az.index(s_string[0]))< int(az.index(placeh)) :
+                if len(string)> len(longstring):
+                    longstring = string
+                    string = s_string[0]
+                    placeh = s_string[0]
+                    s_string.pop(0)
+               
+                else:
+                    string = s_string[0]
+                    placeh =s_string[0]
+                    s_string.pop(0)
+          
+
+    return("Longest substring in alphabetical order is: "+longstring)
+
+
+print(alph(s))
